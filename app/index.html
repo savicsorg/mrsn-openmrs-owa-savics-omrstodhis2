@@ -21,7 +21,12 @@
             <div ui-view="header">
                 
             </div>
-            
+            <script src="../node_modules/angular/angular.min.js"></script>
+            <script src="../node_modules/oclazyload/dist/ocLazyLoad.min.js"></script>
+            <script src="../node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+            <!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
+            <script src="../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+    
             <openmrs-breadcrumbs links="links"></openmrs-breadcrumbs>
             
             <div class="clear"></div>

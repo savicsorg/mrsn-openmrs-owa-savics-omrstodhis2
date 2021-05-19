@@ -21,6 +21,7 @@ import AngularMaterialdatatableCSS from '../../node_modules/angular-material-dat
 import AngularMaterialdatatableJS from '../../node_modules/angular-material-data-table/dist/md-data-table.min.js';
 import style from '../css/main.css';
 import fonts from '../css/fonts.css';
+import ngFileUpload from '../../node_modules/ng-file-upload/dist/ng-file-upload';
 
 export default angular.module('app', [
     'ui.router',

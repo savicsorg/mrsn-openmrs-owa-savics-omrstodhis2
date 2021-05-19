@@ -1,38 +1,79 @@
 <div id="content" class="container-fluid">
+
     <div class="row">
     <h1> Form transfert to Dhis2 module </h1>
     </div>
    <br/>
     <div id="content" class="container-fluid">
-        <!-- <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 homeList" id="apps">
-                <a id="coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension" href="index.html#!/equipements" class="btn btn-default btn-lg button app big align-self-center" type="button">
-                    <i class="icon-list-alt"></i>
-                    Equipments management
-                </a>
+        <div class="row">
+                <label for="">Select a period</label>
+                <md-datepicker ng-model="period" md-placeholder="Period" ng-required md-mode="month" ></md-datepicker>
+                <md-button class="md-primary md-raised" ng-click="ctrlPeriod()">Open</md-button>
+        </div>
+        <div class="row" ng-show = "IsVisible">
+            <md-card >
+                <md-table-container class="container" fixed-column-table>
+                    <table md-table md-progress="promise">
+                        <thead md-head md-order="query.order">
+                            <tr md-row>
+                                <th md-column md-order-by="serialnumber"><span translate>Form</span></th>
+                                <th md-column md-order-by="designation"><span translate>Organization Unit</span></th>
+                                <th md-column md-order-by="strby"><span translate>Stored By</span></th>
+                                <th md-column md-order-by="lastModified"><span translate>Last modified</span></th>
+                            </tr>
+                        </thead>
+                        <tbody md-body>
+                            <tr md-row data-ng-repeat="data in formulaires" >
+                                <td md-cell>{{data.serialnumber}}</td>
+                                <td md-cell>{{data.designation}}</td>
+                                <td md-cell>{{data.strby}}</td>
+                                <td md-cell>{{data.lastModified| date:'dd/MM/yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+                <md-table-pagination md-limit="query.limit" md-limit-options="[10, 15, 50, 100]" md-page="query.page" md-total="{{equipements.count}}" md-page-select="true" md-label="$parent.label">
+                </md-table-pagination>
+            </md-card>
+        </div>
 
-                <a id="org-openmrs-module-coreapps-activeVisitsHomepageLink-org-openmrs-module-coreapps-activeVisitsHomepageLink-extension" href="#" class="btn btn-default btn-lg button app big align-self-center" type="button">
-                    <i class="icon-briefcase"></i>
-                    Maintenance management
-                </a>
+    <div ng-cloak >
+              <div layout="column" layout-align=" none ">
+                <form ng-submit="upload();">
+                  <md-card>
+                      <md-card-content>
+                          <div class="md-dialog-content" oc-lazy-load="'../../node_modules/ng-file-upload/dist/ng-file-upload.min.js'">
+                              <p><span translate>Here you can upload a <i>.csv</i> file</span>.</p>
+                              <div>
+                                  <input type="file" ng-model="uploader.file" ngf-select ngf-pattern="'.csv'" ngf-accept="'.csv'" ngf-max-size="500MB" aria-label="file"/>
+                              </div>
+                          </div>
+                      </md-card-content>
+                  </md-card>
+                  <md-card-actions layout="row" layout-align="end center">
+                      <md-button class="md-primary md-raised" type="submit" ng-disabled="!uploader.file"><span translate>Submit</span></md-button>
+                  </md-card-actions>
+              </form>
+          
+                <!-- <md-card>
+                  <md-card-title>
+                    <md-card-title-text>
+                      <span class="md-headline">Report upload</span>
+                    </md-card-title-text>
+                  </md-card-title>
 
-                <a id="referenceapplication-registrationapp-registerPatient-homepageLink-referenceapplication-registrationapp-registerPatient-homepageLink-extension" href="#" class="btn btn-default btn-lg button app big align-self-center" type="button">
-                    <i class="icon-time"></i>
-                    Scheduled maintenances
-                </a>
-                <a id="reportingui-reports-homepagelink-reportingui-reports-homepagelink-extension" href="#" class="btn btn-default btn-lg button app big align-self-center" type="button">
-                    <i class="icon-list-alt"></i>
-                    Reports
-                </a>
+                  <md-card-content>
+                        <input type="file" name="report" id="report" file-model="myFile">
+                        <md-card-actions layout="row" layout-align="end end">
+                          <md-button class="md-primary md-raised" ng-click="uploadFile()" id="addReport" type="submit">Submit</md-button>
+                        </md-card-actions>    
+                  </md-card-content>
 
-                <a id="coreapps-systemadministration-homepageLink-coreapps-systemadministration-homepageLink-extension" href="#" class="btn btn-default btn-lg button app big align-self-center" type="button">
-                    <i class="icon-cogs"></i>
-                    Module Administration
-                </a>
+                </md-card> -->
+              </div>     
+        </div> 
+    </div> 
+    <br/><br/> 
 
-            </div>
-        </div> -->
-    </div>
-    <br/><br/>
 </div>
 
