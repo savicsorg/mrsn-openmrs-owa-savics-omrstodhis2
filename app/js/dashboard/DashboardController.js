@@ -1,36 +1,5 @@
-    // angular.module('DashboardController', []).directive('fileModel', ['$parse', function ($parse) {
-    //     return {
-    //         restrict: 'A',
-    //         link: function(scope, element, attrs) {
-    //             var model = $parse(attrs.fileModel);
-    //             var modelSetter = model.assign;
-                
-    //             element.bind('change', function(){
-    //                 scope.$apply(function(){
-    //                     modelSetter(scope, element[0].files[0]);
-    //                 });
-    //             });
-    //         }
-    //     };
-    // }]);
-    // angular.module('DashboardController', []).service('fileUpload', ['$http', function ($http) {
-    //     this.uploadFileToUrl = function(file, uploadUrl){
-    //         var fd = new FormData();
-    //         fd.append('file', file);
-    //         $http.post(uploadUrl, fd, {
-    //             transformRequest: angular.identity,
-    //             headers: {'Content-Type': undefined}
-    //         })
-    //         .success(function(){
-    //         })
-    //         .error(function(){
-    //         });
-    //     }
-    // }]);
-
-
-angular.module('DashboardController', []).controller('DashboardController', ['$scope', '$rootScope', 'openmrsRest', '$state', '$ocLazyLoad', '$injector', '$timeout', function ($scope, $rootScope, openmrsRest,  $state, $ocLazyLoad, $injector, $timeout) {
-    $ocLazyLoad.load('../../node_modules/ng-file-upload/dist/ng-file-upload.min.js').then(function() {
+angular.module('DashboardController', []).controller('DashboardController', ['$scope', '$rootScope', 'openmrsRest', '$state', '$ocLazyLoad', '$injector', 'Upload','$timeout', function ($scope, $rootScope, openmrsRest,  $state, $ocLazyLoad, $injector, Upload, $timeout) {
+//    $ocLazyLoad.load('../../node_modules/ng-file-upload/dist/ng-file-upload.min.js').then(function() {
         $scope.rootscope = $rootScope;
 
         console.log("DashboardController new form ---")
@@ -57,7 +26,7 @@ angular.module('DashboardController', []).controller('DashboardController', ['$s
             {"serialnumber": "Consultation Externe", "designation": "HD Gothèye", "strby": "John", "lastModified": "2021-01-31"}
             ];
 
-        var Upload = $injector.get('Upload');
+        //var Upload = $injector.get('Upload');
         $scope.uploader = {};
         $rootScope.kernel.loading = 100;
 
@@ -68,6 +37,10 @@ angular.module('DashboardController', []).controller('DashboardController', ['$s
                     url: 'http://35.180.226.216:3000/reports',
                     data: $scope.uploader,
                     method:'POST'
+                }).then(function onSuccess(response) {
+                    console.log("success");
+                }).catch(function onError(response) {
+                    console.log("error", response);
                 });
 
                 $scope.uploader.file.upload.then(function(response) {
@@ -91,7 +64,7 @@ angular.module('DashboardController', []).controller('DashboardController', ['$s
                 });
             }
         }
-    });
+//    });·
 
 
 // old ctrl

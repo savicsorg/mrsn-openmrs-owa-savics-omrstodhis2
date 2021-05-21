@@ -29,10 +29,13 @@ angular.module('routes', []).config(['$stateProvider', '$urlRouterProvider', '$h
                     var deferred = $q.defer();
                     require.ensure([], function () {
                         var mod = require('./dashboard/DashboardController.js');
+                        var mod1 = require('../../node_modules/ng-file-upload/dist/ng-file-upload.min.js');
+                        console.log(mod1)
                         $ocLazyLoad.load({
                             name: 'DashboardController'
                         });
                         deferred.resolve(mod.controller);
+                        deferred.resolve(mod1.controller);
                     });
                     return deferred.promise;
                 }]
