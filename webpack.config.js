@@ -160,7 +160,8 @@ var config = {
             'angular-gettext',
             'oclazyload',
             'angular-messages',
-            'angular-material-data-table'
+            'angular-material-data-table',
+            'ng-file-upload'
         ]
     },
     devtool: devtool,

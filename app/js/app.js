@@ -33,7 +33,8 @@ export default angular.module('app', [
     'gettext',
     'oc.lazyLoad',
     'angular-jwt',
-    'openmrs-contrib-uicommons'
+    'openmrs-contrib-uicommons',
+    'ng-file-upload'
 ]).config(['openmrsTranslateProvider', translateConfig])
   .config(['$qProvider', function ($qProvider) {
         $qProvider.errorOnUnhandledRejections(false);

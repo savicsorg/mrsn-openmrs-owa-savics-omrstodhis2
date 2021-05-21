@@ -65,7 +65,7 @@ angular.module('DashboardController', []).controller('DashboardController', ['$s
             $rootScope.kernel.loading = 0;
             if ($scope.uploader.file) {
                 $scope.uploader.file.upload = Upload.upload({
-                    url: 'http://35.180.88.15:5001/reports',
+                    url: 'http://35.180.226.216:3000/reports',
                     data: $scope.uploader,
                     method:'POST'
                 });
