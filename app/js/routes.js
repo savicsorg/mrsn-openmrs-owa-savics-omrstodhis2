@@ -16,30 +16,6 @@ angular.module('routes', []).config(['$stateProvider', '$urlRouterProvider', '$h
                     template: require('./templates/footer.html')
                 }
             }
-        }).state('home.dashboard', {// Define home page
-            abstract: true,
-            url: '',
-            template: require('./dashboard/dashboard.html')
-        }).state('home.dashboard.main', {// Define dashboard page
-            url: '',
-            template: require('./dashboard/main.html'),
-            controller: 'DashboardController',
-            resolve: {
-                loadMyCtrl: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {
-                    var deferred = $q.defer();
-                    require.ensure([], function () {
-                        var mod = require('./dashboard/DashboardController.js');
-                        var mod1 = require('../../node_modules/ng-file-upload/dist/ng-file-upload.min.js');
-                        console.log(mod1)
-                        $ocLazyLoad.load({
-                            name: 'DashboardController'
-                        });
-                        deferred.resolve(mod.controller);
-                        deferred.resolve(mod1.controller);
-                    });
-                    return deferred.promise;
-                }]
-            }
         }).state('home.error', {
             url: 'error',
             template: '<div>Error 4000000004</div>',
