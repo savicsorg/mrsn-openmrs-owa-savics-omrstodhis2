@@ -1,14 +1,14 @@
 {
   "version": "1.0.0",
-  "name": "Savics OMRSTODHIS2",
-  "description": "Lets you manage Equipement list and maintenance",
+  "name": "Savics OmrsToDHIS2",
+  "description": "Send aggregated data to DHIS2 as reports",
   "launch_path": "index.html",
   "icons": {
     "48": "/img/omrs-button.png"
   },
   "developer": {
-    "name": "Bachir",
-    "url": "https://github.com/anatoleabe/openmrs-owa-savics-gmao"
+    "name": "SAVICS",
+    "url": "https://github.com/savicsorg/mrsn-openmrs-owa-savics-omrstodhis2"
   },
   "default_locale": "en",
     "activities": {
