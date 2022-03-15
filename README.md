@@ -1,8 +1,8 @@
 <img src="https://cloud.githubusercontent.com/assets/668093/12567089/0ac42774-c372-11e5-97eb-00baf0fccc37.jpg" alt="OpenMRS"/>
 
-# Savics Gmao
+# new-omrstodhis2
 
-This repository contains the Savics Gmao OpenMRS Open Web App.
+This repository contains the new-omrstodhis2 OpenMRS Open Web App.
 
 > Add a description of what your app does here.
 
@@ -27,7 +27,7 @@ Build the distributable using [Webpack](https://webpack.github.io/) as follows:
 npm run build:prod
 ````
 
-This will create a file called `Savics Gmao.zip` file in the `dist` directory,
+This will create a file called `new-omrstodhis2.zip` file in the `dist` directory,
 which can be uploaded to the OpenMRS Open Web Apps module.
 
 ### Local Deploy
@@ -38,14 +38,14 @@ To deploy directly to your local Open Web Apps directory, run:
 npm run build:deploy
 ````
 
-This will build and deploy the app to the `/Users/anatoleabe/openmrs/openmrs-platform/owa`
+This will build and deploy the app to the `C:/Users/User/openmrs/openmrs-platform/owa`
 directory. To change the deploy directory, edit the `LOCAL_OWA_FOLDER` entry in
 `config.json`. If this file does not exists, create one in the root directory
 that looks like:
 
 ```js
 {
-  "LOCAL_OWA_FOLDER": "/Users/anatoleabe/openmrs/openmrs-platform/owa"
+  "LOCAL_OWA_FOLDER": "C:/Users/User/openmrs/openmrs-platform/owa"
 }
 ```
 
@@ -57,8 +57,8 @@ will need the `APP_ENTRY_POINT` entry in your `config.json` file:
 
 ```js
 {
-  "LOCAL_OWA_FOLDER": "/Users/anatoleabe/openmrs/openmrs-platform/owa",
-  "APP_ENTRY_POINT": "http://localhost:8080/openmrs/owa/Savics Gmao/index.html"
+  "LOCAL_OWA_FOLDER": "C:/Users/User/openmrs/openmrs-platform/owa",
+  "APP_ENTRY_POINT": "http://localhost:8080/openmrs/owa/new-omrstodhis2/index.html"
 }
 ```
 Run Browsersync as follows:

@@ -1,39 +1,56 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <!--<base href="/">-->
-        <title>Data Exchange with DHIS2</title>
-        <meta name="description" content="Inventory Maintenance Management."/>
-        <!-- openmrs favicon -->
-        <link rel="shortcut icon" type="image/ico" href="../../images/openmrs-favicon.ico"/>
-        <link rel="icon" type="image/png" href="../../images/openmrs-favicon.png"/>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Data Exchange with DHIS2</title>
+  <meta name="description" content="Data exchange with DHIS2"/>
+  <!-- openmrs favicon -->
+  <link rel="shortcut icon" type="image/ico" href="../../images/openmrs-favicon.ico"/>
+  <link rel="icon" type="image/png" href="../../images/openmrs-favicon.png"/>
 
+  <style>
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+          display: none !important;
+      }
+  </style>
 
-        <style>
-            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-                display: none !important;
-            }
-        </style>
-    </head>
-    
-    <body ng-app="app">
-        <div >
-            <div ui-view="header">
-                
-            </div>
-            <openmrs-breadcrumbs links="links"></openmrs-breadcrumbs>
+</head>
+<body ng-app="app" ng-controller="AppMainController as vm">
+  <di>
+    <div ui-view="header">
+      <openmrs-header title="vm.appTitle"></openmrs-header>       
+    </div>
+
+    <openmrs-breadcrumbs links="vm.links"></openmrs-breadcrumbs>
             
-            <div class="clear"></div>
-            <div  id="body-wrapper">
-                <div ui-view="content" class="container-fluid">
+    <div class="clear"></div>
+      <div  id="body-wrapper">
+          <div ui-view="content" class="container-fluid">
 
-                </div>
-            </div>
-            
-            <div ui-view="footer">
-                
-            </div>
-        </div>
-    </body>
+            <label for="dataset"><strong>Rapport à transférer à DHIS2 : </strong></label> 
+            <select ng-options="item as item.shortName for item in dataSets track by item.id" ng-model="selected"></select>
+            <p><br>
+              <label for="datedebut"><strong>Date début : </strong></label>
+              <input type="date" name="dateDebut" ng-model="dateDebut" ng-change="onChange()">
+              <label for="datefin"><strong>  Date fin : </strong></label>
+              <input type="date" name="dateFin"  ng-model="dateFin" value="{{dateFin}}" readonly>
+            </p><br>
+            <p>
+              <label for="period"><strong>  Période de rapportage : </strong></label>
+              <input type="text" name="period" ng-model="period" value="{{period}}" readonly>
+            </p>
+            <p><br>
+              <button type="button" 
+                ng-click="onSend()">
+                Envoyer
+              </button>
+            </p>
+          </div>
+      </div>
+
+    <div ui-view="footer">
+    </div>
+  </di>
+  
+</body>
 </html>

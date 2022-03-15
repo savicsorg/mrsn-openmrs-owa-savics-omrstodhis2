@@ -1,53 +1,57 @@
 {
-  "name": "openmrs-owa-savics-omrstodhis2",
-  "version": "1.0.0",
-  "description": "OpenMRS Savics OmrsToDhis2 OWA module",
+  "name": "new-omrstodhis2",
+  "version": "0.1.0",
+  "description": "Build and send aggregated data to DHIS2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anatoleabe/openmrs-owa-savics-gmao"
+    "url": "https://github.com/Tmadben/openmrs-owa-new-omrstodhis2"
+  },
+  "engines": {
+    "npm": "^4.0.5",
+    "node": "^7.4.0"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "angular"
+    ],
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
   },
   "dependencies": {
-    "@uirouter/angularjs": "1.0.19",
-    "angular": "1.8.2",
-    "angular-animate": "1.7.2",
-    "angular-jwt": "0.1.10",
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-material": "^1.2.4",
     "angular-resource": "^1.5.11",
-    "angular-route": "1.5.x",
-    "angular-ui-router": "0.3.2",
-    "angular-sanitize": "1.7.2",
-    "angular-gettext": "2.4.1",
-    "angular-messages": "1.7.2",
-    "textangularjs": "2.1.2",
-    "oclazyload": "1.1.0",
-    "openmrs-contrib-uicommons": "^0.3.29",
-    "ng-file-upload": "^12.2.13"
+    "angular-route": "^1.5.11",
+    "angular-translate": "^2.15.2",
+    "angular-ui-router": "^0.3.0",
+    "openmrs-contrib-uicommons": "^0.3.34"
   },
   "devDependencies": {
-    "angular-mocks": "^1.5.5",
-    "angular-translate": "^2.15.2",
-    "angular-material-data-table": "0.10.10",
-    "angular-material": "1.1.10",
-    "angular-aria": "1.7.2",
+    "angular-mocks": "^1.5.3",
     "archiver": "^1.0.0",
-    "autoprefixer": "^6.0.3",
-    "ng-annotate-webpack-plugin": "0.1.3",
-    "eslint-plugin-angular": "^2.4.2",
     "babel-core": "^6.2.1",
-    "babel-loader": "6.x",
+    "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
-    "browser-sync": "^2.26.14",
-    "browser-sync-webpack-plugin": "^1.2.0",
-    "codacy-coverage": "^1.1.3",
-    "copy-webpack-plugin": "^4.3.0",
-    "css-loader": "^0.28.7",
-    "del": "^2.2.0",
+    "browser-sync": "^2.11.1",
+    "browser-sync-webpack-plugin": "^1.0.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.23.1",
     "eslint": "^4.0.0",
-    "extract-text-webpack-plugin": "1.x",
-    "file-loader": "0.10.0",
-    "html-loader": "^0.5.1",
-    "html-webpack-plugin": "^2.30.1",
+    "eslint-plugin-angular": "^2.4.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.24.1",
     "jasmine-core": "^2.6.4",
-    "json-loader": "^0.5.4",
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.1",
@@ -55,16 +59,14 @@
     "karma-jasmine": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.4",
+    "ng-annotate-webpack-plugin": "0.1.3",
     "on-build-webpack": "^0.1.0",
-    "orchestrator": "^0.3.7",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
-    "style-loader": "^0.19.1",
-    "url-loader": "^0.6.2",
-    "webpack": "^1.15.0",
-    "webpack-md5-hash": "0.0.5",
-    "wiredep": "^4.0.0",
-    "yargs": "^4.8.1"
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.13",
+    "yargs": "^4.3.1"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf coverage*",
@@ -72,10 +74,9 @@
     "build:dev": "npm run clean && webpack --progress --colors --mode=dev --target=web",
     "build:prod": "npm run test && npm run build",
     "build:deploy": "webpack --progress --colors --mode=deploy --target=web",
-    "watch": "webpack --progress --colors --watch --mode=deploy --target=web && ./deploy.sh",
+    "watch": "webpack --progress --colors --watch --mode=deploy --target=web",
     "test": "karma start --singleRun=true",
-    "test:debug": "karma start",
-    "deploy:local": "npm run build && ./deploy.sh"
+    "test:debug": "karma start"
   },
   "keywords": [
     "OpenMRS",
@@ -83,6 +84,6 @@
     "Web",
     "App"
   ],
-  "author": "Bachir",
+  "author": "Tmadben",
   "license": "MPL-2.0"
 }

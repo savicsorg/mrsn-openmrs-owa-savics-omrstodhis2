@@ -1,14 +1,14 @@
 {
-  "version": "1.0.0",
-  "name": "Savics OmrsToDHIS2",
-  "description": "Send aggregated data to DHIS2 as reports",
+  "version": "0.1.0",
+  "name": "SAVICS OpenMRS-To-DHIS2",
+  "description": "Build and send aggregated data to DHIS2",
   "launch_path": "index.html",
   "icons": {
     "48": "/img/omrs-button.png"
   },
   "developer": {
-    "name": "SAVICS",
-    "url": "https://github.com/savicsorg/mrsn-openmrs-owa-savics-omrstodhis2"
+    "name": "Tmadben",
+    "url": "https://github.com/Tmadben/openmrs-owa-new-omrstodhis2"
   },
   "default_locale": "en",
     "activities": {
