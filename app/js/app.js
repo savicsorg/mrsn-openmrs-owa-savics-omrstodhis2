@@ -35,6 +35,10 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
     //For Select Items initialization
     vm.selected = dataset.dataSetList[0];
     vm.dataSets = dataset.dataSetList;
+    vm.responseStatus = "";
+    vm.responseText = "";
+    vm.postOperationStatus = false;
+
 
     //Setting reporting period dates
     var date = new Date();
@@ -52,9 +56,45 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
     }
 
     vm.onSend = function(){
+
+        vm.postOperationStatus = false;
+        vm.responseStatus = "";
+        vm.responseText = "";
         var dataToPost = {"dataSetDetails": vm.selected, "startDate": vm.dateDebut, "endDate": vm.dateFin};
-        console.log("Sending data to DHIS2: ", JSON.stringify(dataToPost));
+        console.log("Sending data to DHIS2....: ", JSON.stringify(dataToPost));
+        
+        postToOpenHIM(dataToPost);
     }
+
+
+    //Post data to OpenHIM
+    var postToOpenHIM = function(dataJson){
+        var headers = {
+                'Authorization': 'Basic ' + new Buffer.from(dataset.openhie.username + ":" + dataset.openhie.password).toString('base64'),
+                'Content-Type': 'application/json'
+            };
+        
+        $http({
+                method: 'POST',
+                url: dataset.openhie.url,
+                Headers: headers,
+                data: dataJson
+            }).then(function(response) { 
+                //Success
+                vm.responseStatus = 'SUCCES !';
+                vm.responseText = 'Rapport envoyé vers DHIS2! Veuillez vous connecter à DHIS2 pour vérifier.';
+                console.log(vm.responseStatus, vm.responseText, response.data);
+                vm.postOperationStatus = true;
+
+            }, function(response){
+                //Exception
+                vm.responseStatus = 'ECHEC !';
+                vm.responseText = 'Rapport non envoyé! Veuillez contacter les techniciens du système.';
+                console.log(response);
+                vm.postOperationStatus = true;
+        });
+    }
+
 }]);
 
 function translateConfig(openmrsTranslateProvider) {
