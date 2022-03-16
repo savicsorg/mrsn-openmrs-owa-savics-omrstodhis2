@@ -33,26 +33,26 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
 	vm.appTitle = "Rapportage vers DHIS2";
 
     //For Select Items initialization
-    $scope.selected = dataset.dataSetList[0];
-    $scope.dataSets = dataset.dataSetList;
+    vm.selected = dataset.dataSetList[0];
+    vm.dataSets = dataset.dataSetList;
 
     //Setting reporting period dates
     var date = new Date();
-    $scope.dateDebut = (new Date(date.getFullYear(), date.getMonth()-1,1 ));
-    $scope.dateFin = (new Date(date.getFullYear(), date.getMonth(),0));
-    var periodDate = $scope.dateDebut;
-    $scope.period = $filter('date')(periodDate, "MMM-yyyy");
+    vm.dateDebut = (new Date(date.getFullYear(), date.getMonth()-1,1 ));
+    vm.dateFin = (new Date(date.getFullYear(), date.getMonth(),0));
+    var periodDate = vm.dateDebut;
+    vm.period = $filter('date')(periodDate, "MMM-yyyy");
 
 
     //Select the starting date of the reporting period, the end date and the period will be updated.
-    $scope.onChange = function(){
-        var newDate = $scope.dateDebut;
-        $scope.dateFin = (new Date(newDate.getFullYear(), newDate.getMonth()+1,0));
-        $scope.period = $filter('date')(newDate, "MMM-yyyy");
+    vm.onChange = function(){
+        var newDate = vm.dateDebut;
+        vm.dateFin = (new Date(newDate.getFullYear(), newDate.getMonth()+1,0));
+        vm.period = $filter('date')(newDate, "MMM-yyyy");
     }
 
-    $scope.onSend = function(){
-        var dataToPost = {"dataSetDetails": $scope.selected, "startDate": $scope.dateDebut, "endDate": $scope.dateFin};
+    vm.onSend = function(){
+        var dataToPost = {"dataSetDetails": vm.selected, "startDate": vm.dateDebut, "endDate": vm.dateFin};
         console.log("Sending data to DHIS2: ", JSON.stringify(dataToPost));
     }
 }]);

@@ -28,20 +28,20 @@
           <div ui-view="content" class="container-fluid">
 
             <label for="dataset"><strong>Rapport à transférer à DHIS2 : </strong></label> 
-            <select ng-options="item as item.shortName for item in dataSets track by item.id" ng-model="selected"></select>
+            <select ng-options="item as item.shortName for item in vm.dataSets track by item.id" ng-model="vm.selected"></select>
             <p><br>
               <label for="datedebut"><strong>Date début : </strong></label>
-              <input type="date" name="dateDebut" ng-model="dateDebut" ng-change="onChange()">
+              <input type="date" name="dateDebut" ng-model="vm.dateDebut" ng-change="vm.onChange()">
               <label for="datefin"><strong>  Date fin : </strong></label>
-              <input type="date" name="dateFin"  ng-model="dateFin" value="{{dateFin}}" readonly>
+              <input type="date" name="dateFin"  ng-model="vm.dateFin" value="vm.dateFin" readonly>
             </p><br>
             <p>
               <label for="period"><strong>  Période de rapportage : </strong></label>
-              <input type="text" name="period" ng-model="period" value="{{period}}" readonly>
+              <input type="text" name="period" ng-model="vm.period" value="vm.period" readonly>
             </p>
             <p><br>
               <button type="button" 
-                ng-click="onSend()">
+                ng-click="vm.onSend()">
                 Envoyer
               </button>
             </p>
