@@ -1,26 +1,30 @@
 export const dataset = {
     "openhie": {
-        "url": "https://localhost:6001/reports",
-        "username": "openmrs",
-        "password": "password"
+        "url": "http://localhost:3301/reporting/",
+        "username": "",
+        "password": "",
+        "token": ""
 
     },
 
     "dataSetList": [
-        {
-            "id": "id1",
-            "shortName": "Rapport Consultation Externe",
-            "orgUnit": "orUnit 1"
-        },
-        {
-            "id": "id2",
-            "shortName": "Rapport Service Urgence",
-            "orgUnit": "orUnit 1"
-        },
-        {
-            "id": "id3",
-            "shortName": "Rapport Planification Familialle",
-            "orgUnit": "orUnit 1"
-        }
+            {
+                "id":"l0gtkFMiK7c",
+                "name":"Rapport Mensuel Consultation Externe",
+                "shortName":"Rapport Consultation Externe",
+                "orgUnit":"c2fu0t7tLB1"
+            },
+            {
+                "id":"IK2MZ9VHUVX",
+                "name":"Rapport Mensuel Service des Urgences",
+                "shortName":"Rapport Service Urgence",
+                "orgUnit":"c2fu0t7tLB1"
+            },
+            {
+                "id":"NqLz5CUXGwu",
+                "name":"Rapport Mensuel Planning Familiale",
+                "shortName":"Rapport Planning Familiale",
+                "orgUnit":"c2fu0t7tLB1"
+            }
     ]
 };

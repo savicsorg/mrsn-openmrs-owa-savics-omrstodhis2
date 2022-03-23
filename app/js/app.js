@@ -69,15 +69,13 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
 
     //Post data to OpenHIM
     var postToOpenHIM = function(dataJson){
-        var headers = {
-                'Authorization': 'Basic ' + new Buffer.from(dataset.openhie.username + ":" + dataset.openhie.password).toString('base64'),
-                'Content-Type': 'application/json'
-            };
-        
+        $http.defaults.headers.common.Authorization = 'Bearer ' + dataset.openhie.token;
         $http({
                 method: 'POST',
                 url: dataset.openhie.url,
-                Headers: headers,
+                Headers: {
+                    'Content-Type': 'application/json'
+                },
                 data: dataJson
             }).then(function(response) { 
                 //Success
