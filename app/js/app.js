@@ -63,20 +63,22 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
         var dataToPost = {"dataSetDetails": vm.selected, "startDate": vm.dateDebut, "endDate": vm.dateFin};
         console.log("Sending data to DHIS2....: ", JSON.stringify(dataToPost));
         
-        postToOpenHIM(dataToPost);
+        postToOpenHIM(JSON.stringify(dataToPost));
     }
 
 
     //Post data to OpenHIM
     var postToOpenHIM = function(dataJson){
-        $http.defaults.headers.common.Authorization = 'Bearer ' + dataset.openhie.token;
         $http({
                 method: 'POST',
                 url: dataset.openhie.url,
-                Headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: dataJson
+                withCredentials: true,
+                data: dataJson,
+                headers: {
+                    'Authorization': 'Basic ' + new Buffer.from(dataset.openhie.token + ':' + 'P@ssword').toString('base64'),
+                    'Content-Type': 'application/json',
+                    "Disable-WWW-Authenticate": "true"
+                }
             }).then(function(response) { 
                 //Success
                 vm.responseStatus = 'SUCCES !';

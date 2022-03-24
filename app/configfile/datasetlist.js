@@ -1,6 +1,6 @@
 export const dataset = {
     "openhie": {
-        "url": "http://localhost:3301/reporting/",
+        "url": "http://65.21.190.236:3301/reporting/",
         "username": "",
         "password": "",
         "token": ""
