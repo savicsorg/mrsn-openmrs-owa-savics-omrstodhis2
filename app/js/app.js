@@ -38,6 +38,7 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
     vm.responseStatus = "";
     vm.responseText = "";
     vm.postOperationStatus = false;
+    vm.pleaseWaitTextStatus = false;
 
 
     //Setting reporting period dates
@@ -58,9 +59,10 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
     vm.onSend = function(){
 
         vm.postOperationStatus = false;
+        vm.pleaseWaitTextStatus = true;
         vm.responseStatus = "";
         vm.responseText = "";
-        var dataToPost = {"dataSetDetails": vm.selected, "startDate": vm.dateDebut, "endDate": vm.dateFin};
+        var dataToPost = {"dataSetDetails": vm.selected, "startDate": $filter('date')(vm.dateDebut,"yyyy-MM-dd"), "endDate": $filter('date')(vm.dateFin,"yyyy-MM-dd")};
         console.log("Sending data to DHIS2....: ", JSON.stringify(dataToPost));
         
         postToOpenHIM(JSON.stringify(dataToPost));
@@ -84,6 +86,7 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
                 vm.responseStatus = 'SUCCES !';
                 vm.responseText = 'Rapport envoyé vers DHIS2! Veuillez vous connecter à DHIS2 pour vérifier.';
                 console.log(vm.responseStatus, vm.responseText, response.data);
+                vm.pleaseWaitTextStatus = false;
                 vm.postOperationStatus = true;
 
             }, function(response){
@@ -91,6 +94,7 @@ app.controller('AppMainController', ['$scope', '$http', '$filter', function($sco
                 vm.responseStatus = 'ECHEC !';
                 vm.responseText = 'Rapport non envoyé! Veuillez contacter les techniciens du système.';
                 console.log(response);
+                vm.pleaseWaitTextStatus = false;
                 vm.postOperationStatus = true;
         });
     }
